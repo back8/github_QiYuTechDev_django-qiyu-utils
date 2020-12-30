@@ -5,10 +5,14 @@ __all__ = ["RedirectHelper"]
 
 
 class RedirectHelper(object):
+    """
+    重定向辅助
+    """
+
     @staticmethod
     def to_url(request: HttpRequest, default_url: str, next_param: str = "next") -> str:
         """
-        获取跳转目的 URL
+        获取需要跳转到的 URL
         """
         # noinspection PyTypeChecker
         gn = request.GET.get(next_param, None)
