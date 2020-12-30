@@ -19,4 +19,4 @@ freeze:
 
 
 format:
-	poetry run black django-div-node
+	poetry run black django-qiyu-utils
