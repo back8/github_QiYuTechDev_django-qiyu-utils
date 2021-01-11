@@ -1,7 +1,7 @@
 #
 # modify ${{ PROJECT_NAME }} to your python code src
 #
-name: pytest
+name: Pylama Lint
 
 on:
   push:
@@ -21,10 +21,10 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Pytest
+      - name: Install Pylama
         run: |
-          python -m pip install pytest
+          python -m pip install pylama
 
       - name: Run Lint
         run: |
-          pytest django_qiyu_utils
+          pylama django_qiyu_utils

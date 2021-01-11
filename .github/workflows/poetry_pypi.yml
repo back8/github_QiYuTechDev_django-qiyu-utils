@@ -1,4 +1,8 @@
-name: Upload To PyPi
+#
+# you MUST set PYPI_USERNAME, PYPI_PASSWORD in your project secrets
+# before use this workflow
+#
+name: Poetry Publish
 
 on:
   release:
@@ -15,7 +19,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      - name: Install dependencies
+      - name: Install Poetry
         run: |
           python -m pip install poetry
       - name: Build and publish

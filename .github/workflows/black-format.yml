@@ -1,7 +1,7 @@
 #
 # modify ${{ PROJECT_NAME }} to your python code src
 #
-name: pytest
+name: Black Code Format Check
 
 on:
   push:
@@ -21,10 +21,10 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Pytest
+      - name: Install black
         run: |
-          python -m pip install pytest
+          python -m pip install black
 
-      - name: Run Lint
+      - name: Run black
         run: |
-          pytest django_qiyu_utils
+          black django_qiyu_utils
