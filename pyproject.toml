@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "django-qiyu-utils"
-version = "0.2.2"
-description = "Django Utils for internal use"
+version = "0.2.3"
+description = "Django 辅助工具类"
 authors = ["dev <dev@qiyutech.tech>"]
 readme = "README.md"
 
