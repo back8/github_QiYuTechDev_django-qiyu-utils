@@ -1,4 +1,6 @@
 import os
+import sys
+from typing import Optional
 
 __all__ = ["EnvHelper"]
 
@@ -44,3 +46,25 @@ class EnvHelper(object):
         if os.getenv(key, None) is None:
             return False
         return True
+
+    @staticmethod
+    def try_get_from_env(key: str, default: Optional[str] = None) -> Optional[str]:
+        """
+        从环境变量中获取配置 [有可能返回为 None]
+        :param key: 环境变量的 key
+        :param default: 默认值
+        """
+        return os.environ.get(key, default)
+
+    @staticmethod
+    def get_from_env(key: str, default: Optional[str] = None) -> str:
+        """
+        获取环境变量的值 [环境变量必须存在,否则退出进程]
+        :param key: 环境变量的 key
+        :param default: 默认值
+        """
+        value = EnvHelper.try_get_from_env(key, default)
+        if value is not None:
+            return value
+        print(f"环境变量: {key} 没有设置, 启动服务器失败", file=sys.stderr)
+        sys.exit(2)
