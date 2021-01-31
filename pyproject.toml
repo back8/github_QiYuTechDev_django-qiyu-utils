@@ -5,11 +5,6 @@ description = "Django 辅助工具类"
 authors = ["dev <dev@qiyutech.tech>"]
 readme = "README.md"
 
-[[tool.poetry.source]]
-name = "aliyun"
-url = "https://mirrors.aliyun.com/pypi/simple"
-default = true
-
 [tool.poetry.dependencies]
 python = "^3.9"
 
