@@ -17,14 +17,15 @@ from .env import EnvHelper
 # Django 项目导出的配置项
 #
 __all__ = [
-    "DEBUG",
-    "SECRET_KEY",
-    "ALLOWED_HOSTS",
-    "LANGUAGE_CODE",
-    "TIME_ZONE",
-    "MEDIA_URL",
-    "STATIC_URL",
-    "STATIC_ROOT",
+    "DEBUG",  # by env
+    "SECRET_KEY",  # by env
+    "ALLOWED_HOSTS",  # by env
+    "LANGUAGE_CODE",  # by env
+    "TIME_ZONE",  # by env
+    "MEDIA_URL",  # by env
+    "MEDIA_ROOT",  # by env
+    "STATIC_URL",  # by env
+    "STATIC_ROOT",  # by env
     "STATICFILES_DIRS",
 ]
 
@@ -64,15 +65,10 @@ STATIC_URL = os.getenv("DJANGO_STATIC_URL", "/static/")
 frame = inspect.currentframe()
 BASE_DIR = os.path.join(os.path.dirname(inspect.getfile(frame.f_back)), "..", "..")
 
-STATIC_ROOT = None
-STATICFILES_DIRS = None
+MEDIA_ROOT = os.getenv("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, "..", "media"))
+STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "..", "static"))
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "..", "media")
-
+STATICFILES_DIRS = []
 if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.normpath(os.path.join(BASE_DIR, "..", "static")),
-    ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
+    STATICFILES_DIRS = [STATIC_ROOT]
 #################################################################################
