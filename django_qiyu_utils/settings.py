@@ -63,10 +63,16 @@ STATIC_URL = os.getenv("DJANGO_STATIC_URL", "/static/")
 #################################################################################
 # this is ugly hack
 frame = inspect.currentframe()
-BASE_DIR = os.path.normpath(os.path.join(os.path.dirname(inspect.getfile(frame.f_back)), "..", ".."))
+BASE_DIR = os.path.normpath(
+    os.path.join(os.path.dirname(inspect.getfile(frame.f_back)), "..", "..")
+)
 
-MEDIA_ROOT = os.path.normpath(os.getenv("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, "..", "media")))
-STATIC_ROOT = os.path.normpath(os.getenv("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "..", "static")))
+MEDIA_ROOT = os.path.normpath(
+    os.getenv("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, "..", "media"))
+)
+STATIC_ROOT = os.path.normpath(
+    os.getenv("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "..", "static"))
+)
 
 STATICFILES_DIRS = []
 if DEBUG:
