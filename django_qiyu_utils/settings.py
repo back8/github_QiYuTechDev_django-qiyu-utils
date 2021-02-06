@@ -64,7 +64,7 @@ STATIC_URL = os.getenv("DJANGO_STATIC_URL", "/static/")
 # this is ugly hack
 frame = inspect.currentframe()
 BASE_DIR = os.path.normpath(
-    os.path.join(os.path.dirname(inspect.getfile(frame.f_back)), "..", "..")
+    os.path.abspath(os.path.dirname(inspect.getfile(frame.f_back)))
 )
 
 MEDIA_ROOT = os.path.normpath(
