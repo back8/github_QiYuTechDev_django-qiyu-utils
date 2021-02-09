@@ -98,9 +98,9 @@ if DEBUG:
 #
 SERVE_FILE_URLS = []
 # SERVE_STATIC_FILES
-if os.getenv("SERVE_STATIC_FILES", None) is not None:
+if os.getenv("DJANGO_SERVE_STATIC_FILES", None) is not None:
     SERVE_FILE_URLS += [path(STATIC_URL, serve, {"document_root": STATIC_ROOT})]
 # SERVE_MEDIA_FILES
-if os.getenv("SERVE_MEDIA_FILES", None) is not None:
+if os.getenv("DJANGO_SERVE_MEDIA_FILES", None) is not None:
     SERVE_FILE_URLS += [path(MEDIA_URL, serve, {"document_root": MEDIA_ROOT})]
 #################################################################################
