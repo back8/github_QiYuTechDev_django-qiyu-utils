@@ -10,6 +10,9 @@ from django_qiyu_utils.settings import *
 import inspect
 import os
 
+from django.urls import path
+from django.views.static import serve
+
 from .env import EnvHelper
 
 # 只需要导出有用的变量
@@ -27,6 +30,8 @@ __all__ = [
     "STATIC_URL",  # by env
     "STATIC_ROOT",  # by env
     "STATICFILES_DIRS",
+    # 静态文件服务
+    "SERVE_FILE_URLS",  # by env
 ]
 
 # 安全警告: 请不要在线上环境打开 DEBUG
@@ -81,4 +86,21 @@ if DEBUG:
     # ?: (staticfiles.E002) The STATICFILES_DIRS setting
     # should not contain the STATIC_ROOT setting.
     STATIC_ROOT = None
+#################################################################################
+
+
+#################################################################################
+# 静态文件服务 url
+#
+# 友情提示:
+# 如果您的网站访问量比较大，那么应该使用 Web 服务器来托管静态文件
+# 如果你的网站访问量非常大，那么应该使用 CDN 来托管静态文件
+#
+SERVE_FILE_URLS = []
+# SERVE_STATIC_FILES
+if os.getenv("SERVE_STATIC_FILES", None) is not None:
+    SERVE_FILE_URLS += [path(STATIC_URL, serve, {"document_root": STATIC_ROOT})]
+# SERVE_MEDIA_FILES
+if os.getenv("SERVE_MEDIA_FILES", None) is not None:
+    SERVE_FILE_URLS += [path(MEDIA_URL, serve, {"document_root": MEDIA_ROOT})]
 #################################################################################
