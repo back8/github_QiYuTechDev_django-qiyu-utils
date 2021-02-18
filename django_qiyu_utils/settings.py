@@ -61,9 +61,9 @@ LANGUAGE_CODE = os.getenv("DJANGO_LANGUAGE_CODE", "zh-Hans")
 
 TIME_ZONE = os.getenv("DJANGO_TIME_ZONE", "Asia/Shanghai")
 
-MEDIA_URL = os.getenv("DJANGO_MEDIA_URL", "/media/")
+MEDIA_URL = os.getenv("DJANGO_MEDIA_URL", "media/")
 
-STATIC_URL = os.getenv("DJANGO_STATIC_URL", "/static/")
+STATIC_URL = os.getenv("DJANGO_STATIC_URL", "static/")
 
 #################################################################################
 # this is ugly hack
