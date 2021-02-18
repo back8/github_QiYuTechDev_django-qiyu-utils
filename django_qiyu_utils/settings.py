@@ -97,10 +97,13 @@ if DEBUG:
 # 如果你的网站访问量非常大，那么应该使用 CDN 来托管静态文件
 #
 SERVE_FILE_URLS = []
-# SERVE_STATIC_FILES
-if os.getenv("DJANGO_SERVE_STATIC_FILES", None) is not None:
-    SERVE_FILE_URLS += [path(STATIC_URL, serve, {"document_root": STATIC_ROOT})]
-# SERVE_MEDIA_FILES
-if os.getenv("DJANGO_SERVE_MEDIA_FILES", None) is not None:
-    SERVE_FILE_URLS += [path(MEDIA_URL, serve, {"document_root": MEDIA_ROOT})]
+# django serve static files
+static_file_path = os.getenv("DJANGO_SERVE_STATIC_FILES", None)
+if static_file_path is not None:
+    SERVE_FILE_URLS += [path(STATIC_URL, serve, {"document_root": static_file_path})]
+
+# django serve media files
+media_file_path = os.getenv("DJANGO_SERVE_MEDIA_FILES", None)
+if media_file_path is not None:
+    SERVE_FILE_URLS += [path(MEDIA_URL, serve, {"document_root": media_file_path})]
 #################################################################################
