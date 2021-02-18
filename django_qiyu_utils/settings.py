@@ -100,10 +100,14 @@ SERVE_FILE_URLS = []
 # django serve static files
 static_file_path = os.getenv("DJANGO_SERVE_STATIC_FILES", None)
 if static_file_path is not None:
-    SERVE_FILE_URLS += [path(STATIC_URL, serve, {"document_root": static_file_path})]
+    SERVE_FILE_URLS += [
+        path(f"{STATIC_URL}<path:path>", serve, {"document_root": static_file_path})
+    ]
 
 # django serve media files
 media_file_path = os.getenv("DJANGO_SERVE_MEDIA_FILES", None)
 if media_file_path is not None:
-    SERVE_FILE_URLS += [path(MEDIA_URL, serve, {"document_root": media_file_path})]
+    SERVE_FILE_URLS += [
+        path(f"{MEDIA_URL}<path:path>", serve, {"document_root": media_file_path})
+    ]
 #################################################################################
