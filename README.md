@@ -1,4 +1,4 @@
-# 奇遇科技 Django 开发辅助工具箱
+# 奇遇科技 Django 辅助工具箱
 
 ![PyPI - Version](https://img.shields.io/pypi/v/django-qiyu-utils)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-qiyu-utils)
